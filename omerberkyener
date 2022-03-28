@@ -1,0 +1,110 @@
+HTML DOSYASI
+<!DOCTYPE HTML>
+<html>
+    <head>
+<title>21.03.2022 Bilişim Dersi</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <meta charset="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+        <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+   />
+    </head>
+<body>
+   
+        <div class="container">
+            <div class="row col-md-6 col-md-offset-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading text-center">
+                        <h1>Kayıt Formu</h1>
+                    </div>
+                    <div class="panel-body">
+                        <form class="deneme" action="process.php" method="POST" onsubmit="">
+                            <div class="form-grup">
+                                <label for="isim">İsim</label>
+                                <input type="text" class="form-control" id="isim" name="isim"/>
+                            </div>
+
+                            <div class="form-grup">
+                                <label for="soyad">Soyad</label>
+                                <input type="text" class="form-control" id="soyad" name="soyad"/>
+                            </div>
+
+                            <div class="form-grup">
+                                <label for="eposta">e-posta</label>
+                                <input type="email" class="form-control" id="eposta" name="eposta"/>
+                            </div>
+
+                            <div class="form-grup">
+                                <label for="sınıf">Sınıf</label>
+                                <label for="12/A" class="radio-inline"><input type="radio" class="sınıf" id="12/a" checked name="sınıf" value="12/A"/>12/A</label>
+                                <label for="12/B" class="radio-inline"><input type="radio" class="sınıf" id="12/b"  name="sınıf" value="12/A"/>12/B</label>
+                                <label for="12/C" class="radio-inline"><input type="radio" class="sınıf" id="12/c"  name="sınıf" value="12/A"/>12/C</label>
+                            </div>
+
+                            <div class="form-grup">
+                                <label for="numara">Cep Numarası</label>
+                                <input type="tel" class="form-control" id="numara" name="numara" maxlength="13"/>
+
+
+                               
+
+
+                            </div>
+                            <input type="submit" name="btn-main">
+                        </form>
+                        <div class="alert alert-info" style="display: none;"></div>
+                    </div>
+                    <div class="panel-footer text-right">
+                    <small>&copy; Ömer Berk Yener</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</body>
+<script>
+    const phoneInputField = document.querySelector("#numara");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+    const info = document.querySelector(".alert-info");
+
+
+    
+    function getIp(callback) {
+ fetch('https://ipinfo.io/json?token=<your token>', { headers: { 'Accept': 'application/json' }})
+   .then((resp) => resp.json())
+   .catch(() => {
+     return {
+       country: 'tr',
+     };
+   })
+   .then((resp) => callback(resp.country));
+
+}
+
+
+
+  </script>
+</html>
+
+
+PHP DOSYASI
+<?php
+if(isset($_POST['btn-main'])){
+    $v1 = $_POST['isim'];
+    $v2 = $_POST['soyad'];
+    $v3 = $_POST['eposta'];
+    $v4 = $_POST['sınıf'];
+    $v5 = $_POST['numara'];
+    echo "İsim : $v1<br>";
+    echo "Soyad : $v2<br>";
+    echo "E-posta : $v3<br>";
+    echo "Sınıf : $v4<br>";
+    echo "Telefon Numarası : $v5<br>";
+}
+?>
