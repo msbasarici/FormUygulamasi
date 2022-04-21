@@ -1,0 +1,45 @@
+//html tarafı
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>Başvuru Formu</h1>
+<form action="samedde.php" method="POST">
+<input type="text" name="isim" placeholder="İsim Soyisim" required /><br>
+<input type="text" name="ka" placeholder="Kullanıcı Adı"required /><br>
+<input type="email" name="eposta" placeholder="sss123456@hotmail.com"required /><br>
+Sınıf<br>
+12/A <input type="radio"  name="sinif" checked value="12/A" /><br>
+12/B <input type="radio"  name="sinif" value="12/B" /><br>
+12/C <input type="radio"  name="sinif" value="12/C" /><br>
+12/D <input type="radio"  name="sinif" value="12/D" /><br>
+Tel Numarası:<input type="tel" name="numara" maxlength="11" placeholder="000 000 0000"/><br>
+Fikirleriniz:<br>
+<textarea name="alan" required></textarea><br>
+Okudum Kabul Ediyorum <input type="checkbox"  name="kutu" required/><br>
+<input type="submit" name="Gonder"><br>
+</form>
+</body>
+</html>
+
+//php tarafı
+<?php
+if(isset($_POST['Gonder'])){
+$isim = $_POST['isim'];
+$kull = $_POST['ka'];
+$mail = $_POST['eposta'];
+$okul = $_POST['sinif'];
+$tel = $_POST['numara'];
+$aalan = $_POST['alan'];
+echo "Ad Soyad: $isim<br>";
+echo "Kullanici Adi: $kull<br>";
+echo "E-posta: $mail<br>";
+echo "Sinif: $okul<br>";
+if(empty($cepno)){}
+else{
+echo "Telefon Numarasi: $tel<br>";}
+echo "Fikirleriniz: $aalan<br>";
+}
+?>
